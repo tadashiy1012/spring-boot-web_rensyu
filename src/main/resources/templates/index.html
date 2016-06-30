@@ -1,0 +1,8 @@
+<h1>Hello Thymeleaf!</h1>
+<h2>
+  <div th:each="hoge : ${data}">
+    <span th:text="${hoge.id}"></span>
+    <span>:</span>
+    <span th:text="${hoge.value}"></span>
+  </div>
+</h2>

@@ -1,0 +1,36 @@
+<h1>index</h1>
+<form id="form1" action="/hello" method="POST">
+<input id="inId" type="text" name="id" />
+<br />
+<input id="inVal" type="text" name="value" />
+<br />
+<input id="subBtn" type="submit" value="submit">
+</form>
+<script>
+window.addEventListener('load', function() {
+  var form = document.getElementById('form1');
+  var inId = document.getElementById('inId');
+  var inVal = document.getElementById('inVal');
+  form.addEventListener('submit', function(ev) {
+    ev.preventDefault();
+    console.log(ev);
+    var data = {
+      id: inId.value,
+      value: inVal.value
+    };
+    fetch('/hello', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(function(resp) {
+      return resp.text();
+    }).then(function(text) {
+      console.log(text);
+      window.alert('ok');
+    })
+  });
+  console.log('ready');
+});
+</script>
